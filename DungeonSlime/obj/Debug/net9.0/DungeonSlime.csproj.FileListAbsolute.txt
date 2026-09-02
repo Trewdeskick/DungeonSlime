@@ -37,3 +37,4 @@ C:\Users\kaidy\Documents\CMSC 245 - Game Programming\MonoGameIntro\DungeonSlime\
 C:\Users\kaidy\Documents\CMSC 245 - Game Programming\MonoGameIntro\DungeonSlime\bin\Debug\net9.0\Content\images\download.xnb
 C:\Users\kaidy\Documents\CMSC 245 - Game Programming\MonoGameIntro\DungeonSlime\bin\Debug\net9.0\Content\arpmedia-club-party-dance-music-569466.ogg
 C:\Users\kaidy\Documents\CMSC 245 - Game Programming\MonoGameIntro\DungeonSlime\bin\Debug\net9.0\Content\arpmedia-club-party-dance-music-569466.xnb
+C:\Users\kaidy\Documents\CMSC 245 - Game Programming\MonoGameIntro\DungeonSlime\obj\Debug\net9.0\DungeonSlime.sourcelink.json

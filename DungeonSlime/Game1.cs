@@ -24,7 +24,12 @@ public class Game1 : Game
     private const int targetFrames = 30;
 
     // Gravity and Movement
-    private const int gravity = 0;
+    private Rectangle bound;
+    private Rectangle bound2;
+    private Vector2 velocity;
+    private const int gravity = 2000;
+
+
 
     public Game1()
     {
@@ -61,9 +66,27 @@ public class Game1 : Game
         // TODO: use this.Content to load your game content here
     }
 
-    protected void PlayerMovement()
+    protected void playerMovement()
     {
         
+        KeyboardState pressedKey = Keyboard.GetState();
+
+        if (pressedKey.IsKeyDown(Keys.W) || pressedKey.IsKeyDown(Keys.Up))
+        {
+            Console.WriteLine("Player Jumps");
+        }
+        if (pressedKey.IsKeyDown(Keys.A) || pressedKey.IsKeyDown(Keys.Left))
+        {
+            Console.WriteLine("Player Moves Left");
+            velocity.X = -100;
+        }
+        if (pressedKey.IsKeyDown(Keys.D) || pressedKey.IsKeyDown(Keys.Right))
+        {
+            Console.WriteLine("Player Moves Right");
+            velocity.X = 100;
+        }
+    
+
     }
 
     protected override void Update(GameTime gameTime)
@@ -71,7 +94,7 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-
+        playerMovement();
         base.Update(gameTime);
     }
 
