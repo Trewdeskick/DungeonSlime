@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>c:/Users/kaidy/Documents/CMSC 245 - Game Programming/MonoGameIntro/DungeonSlime/Content/arpmedia-club-party-dance-music-569466.mp3</SourceFile>
+  <SourceFile>c:/Users/kaidy/Documents/CMSC 245 - Game Programming/BouncingBallMG/DungeonSlime/Content/arpmedia-club-party-dance-music-569466.mp3</SourceFile>
   <SourceTime>2026-09-01T13:31:12.6871116-04:00</SourceTime>
-  <DestFile>c:/Users/kaidy/Documents/CMSC 245 - Game Programming/MonoGameIntro/DungeonSlime/Content/bin/DesktopGL/arpmedia-club-party-dance-music-569466.xnb</DestFile>
-  <DestTime>2026-09-01T13:35:49.1370301-04:00</DestTime>
+  <DestFile>c:/Users/kaidy/Documents/CMSC 245 - Game Programming/BouncingBallMG/DungeonSlime/Content/bin/DesktopGL/arpmedia-club-party-dance-music-569466.xnb</DestFile>
+  <DestTime>2026-09-02T23:04:42.4637609-04:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2026-08-14T17:50:10-04:00</ImporterTime>
   <Processor>SongProcessor</Processor>
@@ -19,6 +19,6 @@
   <Dependencies />
   <BuildAsset />
   <BuildOutput>
-    <string>c:/Users/kaidy/Documents/CMSC 245 - Game Programming/MonoGameIntro/DungeonSlime/Content/bin/DesktopGL/arpmedia-club-party-dance-music-569466.ogg</string>
+    <string>c:/Users/kaidy/Documents/CMSC 245 - Game Programming/BouncingBallMG/DungeonSlime/Content/bin/DesktopGL/arpmedia-club-party-dance-music-569466.ogg</string>
   </BuildOutput>
 </PipelineBuildEvent>

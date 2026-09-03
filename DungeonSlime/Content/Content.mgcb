@@ -33,3 +33,10 @@
 /processorParam:Version=3.8.5.1
 /build:images/download.jpg
 
+#begin Soulja Boy Tell'em - Turn My Swag On (Official Video).mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/processorParam:Version=3.8.5.1
+/build:Soulja Boy Tell'em - Turn My Swag On (Official Video).mp3
+

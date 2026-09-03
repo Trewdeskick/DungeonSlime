@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/kaidy/Documents/CMSC 245 - Game Programming/MonoGameIntro/DungeonSlime/Content/images/download.jpg</SourceFile>
+  <SourceFile>C:/Users/kaidy/Documents/CMSC 245 - Game Programming/BouncingBallMG/DungeonSlime/Content/images/download.jpg</SourceFile>
   <SourceTime>2026-08-31T14:28:45.3629357-04:00</SourceTime>
-  <DestFile>C:/Users/kaidy/Documents/CMSC 245 - Game Programming/MonoGameIntro/DungeonSlime/Content/bin/DesktopGL/Content/images/download.xnb</DestFile>
-  <DestTime>2026-08-31T14:38:31.5771912-04:00</DestTime>
+  <DestFile>C:/Users/kaidy/Documents/CMSC 245 - Game Programming/BouncingBallMG/DungeonSlime/Content/bin/DesktopGL/Content/images/download.xnb</DestFile>
+  <DestTime>2026-09-02T14:22:56.8178911-04:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2026-08-14T17:50:10-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

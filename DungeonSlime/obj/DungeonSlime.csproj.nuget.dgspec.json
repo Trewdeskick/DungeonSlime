@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\kaidy\\Documents\\CMSC 245 - Game Programming\\MonoGameIntro\\DungeonSlime\\DungeonSlime.csproj": {}
+    "C:\\Users\\kaidy\\Documents\\CMSC 245 - Game Programming\\BouncingBallMG\\DungeonSlime\\DungeonSlime.csproj": {}
   },
   "projects": {
-    "C:\\Users\\kaidy\\Documents\\CMSC 245 - Game Programming\\MonoGameIntro\\DungeonSlime\\DungeonSlime.csproj": {
+    "C:\\Users\\kaidy\\Documents\\CMSC 245 - Game Programming\\BouncingBallMG\\DungeonSlime\\DungeonSlime.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\kaidy\\Documents\\CMSC 245 - Game Programming\\MonoGameIntro\\DungeonSlime\\DungeonSlime.csproj",
+        "projectUniqueName": "C:\\Users\\kaidy\\Documents\\CMSC 245 - Game Programming\\BouncingBallMG\\DungeonSlime\\DungeonSlime.csproj",
         "projectName": "DungeonSlime",
-        "projectPath": "C:\\Users\\kaidy\\Documents\\CMSC 245 - Game Programming\\MonoGameIntro\\DungeonSlime\\DungeonSlime.csproj",
+        "projectPath": "C:\\Users\\kaidy\\Documents\\CMSC 245 - Game Programming\\BouncingBallMG\\DungeonSlime\\DungeonSlime.csproj",
         "packagesPath": "C:\\Users\\kaidy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\kaidy\\Documents\\CMSC 245 - Game Programming\\MonoGameIntro\\DungeonSlime\\obj\\",
+        "outputPath": "C:\\Users\\kaidy\\Documents\\CMSC 245 - Game Programming\\BouncingBallMG\\DungeonSlime\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

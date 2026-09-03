@@ -4,11 +4,13 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/kaidy/Documents/CMSC 245 - Game Programming/MonoGameIntro/DungeonSlime/Content/arpmedia-club-party-dance-music-569466.mp3</File>
-    <File>C:/Users/kaidy/Documents/CMSC 245 - Game Programming/MonoGameIntro/DungeonSlime/Content/images/download.jpg</File>
+    <File>C:/Users/kaidy/Documents/CMSC 245 - Game Programming/BouncingBallMG/DungeonSlime/Content/arpmedia-club-party-dance-music-569466.mp3</File>
+    <File>C:/Users/kaidy/Documents/CMSC 245 - Game Programming/BouncingBallMG/DungeonSlime/Content/images/download.jpg</File>
+    <File>C:/Users/kaidy/Documents/CMSC 245 - Game Programming/BouncingBallMG/DungeonSlime/Content/Soulja Boy Tell'em - Turn My Swag On (Official Video).mp3</File>
   </SourceFiles>
   <DestFiles>
     <File>arpmedia-club-party-dance-music-569466</File>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>
