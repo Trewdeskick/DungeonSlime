@@ -10,6 +10,7 @@ namespace DungeonSlime;
 public class Game1 : Game
 {
     private GraphicsDeviceManager _graphics;
+    private readonly Random rand;
 
     // Effects
     private SpriteBatch _spriteBatch;
@@ -25,16 +26,28 @@ public class Game1 : Game
     private int frameCounter = 0;
     private const int targetFrames = 30;
 
-    // Bouncing Ball Info
-    private Vector2 _ballPosition;
-    private Vector2 _ballVelocity;
+    // Bouncing 'Ball' Info
     private Texture2D _logo;
+    private Physics[] _kittys = new Physics[5];
+
+    public struct Physics
+    {
+        public Vector2 _ballPosition;
+        public Vector2 _ballVelocity;
+
+        public Physics(Vector2 position, Vector2 velocity)
+        {
+            _ballPosition = position;
+            _ballVelocity = velocity;
+        }
+    }
 
 
     // make it like galaga and add sprites that look like: >:(
     public Game1()
     {
         _graphics = new GraphicsDeviceManager(this);
+        rand = new Random();
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
 
@@ -50,8 +63,33 @@ public class Game1 : Game
 
         Window.AllowUserResizing = true;
 
-        _graphics.PreferredBackBufferWidth = 1600;
-        _graphics.PreferredBackBufferHeight = 1000;
+        _graphics.PreferredBackBufferWidth = 1920;
+        _graphics.PreferredBackBufferHeight = 1080;
+        _graphics.ApplyChanges();
+
+        int _screenWidth = GraphicsDevice.Viewport.Width;
+        int _screenHeight = GraphicsDevice.Viewport.Height;
+
+        for (int i = 0; i < _kittys.Length; i++)
+        {
+
+            // Position the ball in the center of the screen
+            Vector2 _initialPosition = new Vector2(
+                rand.Next(0, _screenWidth / 2),
+                rand.Next(0, _screenHeight / 2)
+            );
+
+            // Give the ball a random velocity
+            Vector2 _initialVelocity = new Vector2 (
+                (float)rand.NextDouble(),
+                (float)rand.NextDouble()
+            );
+
+            _initialVelocity.Normalize();
+            _initialVelocity *= 1000f;
+
+            _kittys[i] = new Physics(_initialPosition, _initialVelocity);
+        }
 
         base.Initialize();
     }
@@ -67,20 +105,6 @@ public class Game1 : Game
         MediaPlayer.IsRepeating = true;
         MediaPlayer.Volume = 0.5f;
         MediaPlayer.Play(_bgm);
-
-        // Position the ball in the center of the screen
-        _ballPosition.X = GraphicsDevice.Viewport.Width / 2;
-        _ballPosition.Y = GraphicsDevice.Viewport.Height / 2;
-
-        // Give the ball a random velocity
-        System.Random rand = new();
-        _ballVelocity.X = (float)rand.NextDouble();
-        _ballVelocity.Y = (float)rand.NextDouble();
-        _ballVelocity.Normalize();
-        _ballVelocity *= 1000;
-
-        Console.WriteLine(_ballVelocity.X);
-        Console.WriteLine(_ballVelocity.Y);
 
         // TODO: use this.Content to load your game content here
     }
@@ -120,16 +144,25 @@ public class Game1 : Game
         if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
             Exit();
 
-        _ballPosition += _ballVelocity * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-        if(_ballPosition.X < GraphicsDevice.Viewport.X || _ballPosition.X > GraphicsDevice.Viewport.Width - _logo.Bounds.Width)
+        for (int i = 0; i < _kittys.Length; i++)
         {
-            _ballVelocity.X *= -1;
+            _kittys[i]._ballPosition += _kittys[i]._ballVelocity *
+                (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+         if(_kittys[i]._ballPosition.X < GraphicsDevice.Viewport.X ||
+            _kittys[i]._ballPosition.X > GraphicsDevice.Viewport.Width - _logo.Bounds.Width)
+            {
+                _kittys[i]._ballVelocity.X *= -1;
+            }
+            if (_kittys[i]._ballPosition.Y < GraphicsDevice.Viewport.Y ||
+                _kittys[i]._ballPosition.Y > GraphicsDevice.Viewport.Height - _logo.Bounds.Height)
+            {
+               _kittys[i]._ballVelocity.Y *= -1;
+            }
         }
-        if (_ballPosition.Y < GraphicsDevice.Viewport.Y || _ballPosition.Y > GraphicsDevice.Viewport.Height - _logo.Bounds.Height)
-        {
-            _ballVelocity.Y *= -1;
-        }
+
+        ResolveKittyCollisions();
 
         _elapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
         _frameRateTracker++;
@@ -146,6 +179,60 @@ public class Game1 : Game
 
         //playerMovement();
         base.Update(gameTime);
+    }
+
+    // AI GENERATED CODE
+    private void ResolveKittyCollisions()
+    {
+        Vector2 spriteSize = new(_logo.Width, _logo.Height);
+        Vector2 halfSpriteSize = spriteSize / 2f;
+
+        for (int first = 0; first < _kittys.Length - 1; first++)
+        {
+            for (int second = first + 1; second < _kittys.Length; second++)
+            {
+                Vector2 firstCenter = _kittys[first]._ballPosition + spriteSize / 2f;
+                Vector2 secondCenter = _kittys[second]._ballPosition + spriteSize / 2f;
+                Vector2 separation = secondCenter - firstCenter;
+                float overlapX = (halfSpriteSize.X * 2f) - MathF.Abs(separation.X);
+                float overlapY = (halfSpriteSize.Y * 2f) - MathF.Abs(separation.Y);
+
+                if (overlapX <= 0f || overlapY <= 0f)
+                {
+                    continue;
+                }
+
+                Vector2 collisionNormal;
+                float overlap;
+
+                if (overlapX < overlapY)
+                {
+                    collisionNormal = new Vector2(separation.X < 0f ? -1f : 1f, 0f);
+                    overlap = overlapX;
+                }
+                else
+                {
+                    collisionNormal = new Vector2(0f, separation.Y < 0f ? -1f : 1f);
+                    overlap = overlapY;
+                }
+
+                _kittys[first]._ballPosition -= collisionNormal * (overlap / 2f);
+                _kittys[second]._ballPosition += collisionNormal * (overlap / 2f);
+
+                float relativeSpeed = Vector2.Dot(
+                    _kittys[second]._ballVelocity - _kittys[first]._ballVelocity,
+                    collisionNormal);
+
+                if (relativeSpeed < 0f)
+                {
+                    float firstNormalSpeed = Vector2.Dot(_kittys[first]._ballVelocity, collisionNormal);
+                    float secondNormalSpeed = Vector2.Dot(_kittys[second]._ballVelocity, collisionNormal);
+
+                    _kittys[first]._ballVelocity += (secondNormalSpeed - firstNormalSpeed) * collisionNormal;
+                    _kittys[second]._ballVelocity += (firstNormalSpeed - secondNormalSpeed) * collisionNormal;
+                }
+            }
+        }
     }
 
     protected override void Draw(GameTime gameTime)
@@ -171,11 +258,13 @@ public class Game1 : Game
         // Begin the sprite batch to prepare for rendering.
         _spriteBatch.Begin();
 
-        //Draw the texture
-        _spriteBatch.Draw(_logo, _ballPosition, Color.White);
+        for (int i = 0; i < _kittys.Length; i++) {
+            //Draw the texture
+            _spriteBatch.Draw(_logo, _kittys[i]._ballPosition, Color.White);
+        }
 
         _spriteBatch.End();
-        
+
         base.Draw(gameTime);
     }
 
